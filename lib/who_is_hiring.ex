@@ -19,14 +19,17 @@ defmodule WhoIsHiring do
     |> Enum.filter(fn %{"text" => text} ->
       Enum.any?(langs_of_interest, &String.contains?(String.downcase(text), &1))
     end)
+    |> Enum.sort_by(& &1["time"])
     |> print_results()
   end
 
   def print_results(results) do
     results
-    |> Enum.each(fn %{"text" => text, "id" => id} ->
+    |> Enum.each(fn %{"text" => text, "id" => id, "time" => time} ->
       first_letters = String.slice(text, 0, 60)
-      IO.puts("https://news.ycombinator.com/item?id=#{id} #{first_letters}...")
+      date = DateTime.from_unix!(time)
+
+      IO.puts("#{date} #{first_letters}... https://news.ycombinator.com/item?id=#{id}")
     end)
   end
 end
