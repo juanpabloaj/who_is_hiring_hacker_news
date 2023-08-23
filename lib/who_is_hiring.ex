@@ -17,7 +17,7 @@ defmodule WhoIsHiring do
       [m | acc]
     end)
     |> Enum.filter(fn %{"text" => text} ->
-      Enum.any?(langs_of_interest, &String.contains?(String.downcase(text), &1))
+      Enum.any?(langs_of_interest, &String.contains?(text, &1))
     end)
     |> Enum.sort_by(& &1["time"])
     |> print_results()
