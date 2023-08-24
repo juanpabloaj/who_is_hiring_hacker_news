@@ -10,9 +10,9 @@ Looking for job posts with the word elixir. It requires the parent post id, for 
 
     WhoIsHiring.generate_report("36956867")
 
-    https://news.ycombinator.com/item?id=36960439 Ockam | Remote (some US only, others global) | We make tools...
-    https://news.ycombinator.com/item?id=36963079 Nightwatch.io | 100% Remote | Full-time &amp; Part-time<p>Cu...
-    https://news.ycombinator.com/item?id=36957964 HamiltonPractice, REMOTE, INTERNS, ~1000$ pm, 3 months<p>Ham...
+    2023-08-01 18:40:02Z Ockam | Remote (some US only, others global) | We make tools... https://news.ycombinator.com/item?id=36960439
+    2023-08-01 21:15:32Z Nightwatch.io | 100% Remote | Full-time &amp; Part-time<p>Cu... https://news.ycombinator.com/item?id=36963079
+    2023-08-03 20:18:57Z CareCar | USA | Web Backend Engineer | Remote US only<p>Care... https://news.ycombinator.com/item?id=36991211
 
 Looking for job posts with other words
 
