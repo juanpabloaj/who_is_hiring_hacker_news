@@ -7,7 +7,7 @@ defmodule WhoIsHiring.Telegramer do
     To avoid sending too many messages to the telegram API, throttling is implemented by queue and timer.
   """
 
-  @interval 500
+  @interval 1000
 
   def start_link(opts) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)

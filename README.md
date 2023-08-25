@@ -16,11 +16,15 @@ Looking for job posts with the word elixir. It requires the parent post id, for 
 
 Looking for job posts with other words
 
-    WhoIsHiring.generate_report("36956867", ["elixir", "golang"])
+    WhoIsHiring.generate_report("36956867", ["Elixir", "Golang"])
 
 ## notification mode
 
 If the variables are available, the module will check the post of hacker news periodically, if it finds a comment with a mention of one of your technologies of interest, you are going to receive a telegram notification with a short description and the job description link.
+
+It uses a SQLite table to save the sent notifications and avoid sending them twice.
+
+To avoid sending too many messages to the Telegram API, it sends one message per second to Telegram, check `lib/who_is_hiring/telegramer.ex` for more details.
 
 Define and export environment variables
 
@@ -39,4 +43,6 @@ Create the database and migrate
 
 Start mix
 
+    TECHS_OF_INTEREST="Elixir,Golang" \
+    HN_PARENT_POST=36956867 \
     mix run --no-halt
