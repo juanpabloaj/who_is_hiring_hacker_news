@@ -32,6 +32,17 @@ defmodule WhoIsHiring.HackerNewsClient do
     {:ok, child_ids}
   end
 
+  def get_item_info(item_id) do
+    item_id
+    |> get_item()
+    |> decode_item()
+  end
+
+  def decode_item({:ok, %Response{body: body}}) do
+    body
+    |> Jason.decode!()
+  end
+
   def get_child_item(child_id) do
     child_id
     |> get_item()

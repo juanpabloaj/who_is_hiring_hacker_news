@@ -1,3 +1,6 @@
+# database
+*.db
+*.db-*
 # The directory Mix will write compiled artifacts to.
 /_build/
 

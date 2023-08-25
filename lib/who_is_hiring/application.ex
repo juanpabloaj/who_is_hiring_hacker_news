@@ -8,7 +8,8 @@ defmodule WhoIsHiring.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      WhoIsHiring.HackerNewsClient.child_spec()
+      WhoIsHiring.HackerNewsClient.child_spec(),
+      {WhoIsHiring.Repo, []},
       # Starts a worker by calling: WhoIsHiring.Worker.start_link(arg)
       # {WhoIsHiring.Worker, arg}
     ]
