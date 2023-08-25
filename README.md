@@ -22,7 +22,7 @@ Looking for job posts with other words
 
 If the variables are available, the module will check the post of hacker news periodically, if it finds a comment with a mention of one of your technologies of interest, you are going to receive a telegram notification with a short description and the job description link.
 
-It uses a SQLite table to save the sent notifications and avoid sending them twice.
+It uses a SQLite table to save the sent notifications and avoid sending them twice. The migrations are applied when the app start.
 
 To avoid sending too many messages to the Telegram API, it sends one message per second to Telegram, check `lib/who_is_hiring/telegramer.ex` for more details.
 
@@ -35,11 +35,6 @@ Define and export environment variables
     HN_PARENT_POST=36956867
 
 You can get the `TELEGRAM_TOKEN` from telegram [BotFather](https://core.telegram.org/bots/tutorial#obtain-your-bot-token).
-
-Create the database and migrate
-
-    mix ecto.create
-    mix ecto.migrate
 
 Start mix
 
