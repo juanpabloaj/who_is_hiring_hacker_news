@@ -6,6 +6,21 @@ It is strongly based on https://blog.appsignal.com/2020/07/28/the-state-of-elixi
 
 ## Usage
 
+Define environment variables
+
+    DATABASE_PATH
+    TELEGRAM_TOKEN
+    TELEGRAM_CHANNEL_ID
+    TECHS_OF_INTEREST="Elixir,Erlang"
+    HN_PARENT_POST=36956867
+
+You can get the `TELEGRAM_TOKEN` from telegram [BotFather](https://core.telegram.org/bots/tutorial#obtain-your-bot-token).
+
+Create the database and migrate
+
+    mix ecto.create
+    mix ecto.migrate
+
 Looking for job posts with the word elixir. It requires the parent post id, for example, the post id of "Ask HN: Who is hiring? (August 2023)", (https://news.ycombinator.com/item?id=36956867).
 
     WhoIsHiring.generate_report("36956867")
