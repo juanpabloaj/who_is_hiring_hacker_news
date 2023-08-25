@@ -3,13 +3,7 @@ defmodule WhoIsHiring.Repo do
 
   import Ecto.Query
 
-  alias WhoIsHiring.{Story, Comment}
-
-  def latest_story_id() do
-    from(s in Story, order_by: [desc: s.time], limit: 1)
-    |> one()
-    |> Map.get(:hacker_news_id)
-  end
+  alias WhoIsHiring.Comment
 
   def unnotified_comments do
     from(c in Comment, where: is_nil(c.notified_at), order_by: [asc: c.time])

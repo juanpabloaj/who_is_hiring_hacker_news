@@ -5,7 +5,7 @@ defmodule WhoIsHiring do
   require Logger
 
   alias WhoIsHiring.HackerNewsClient
-  alias WhoIsHiring.{Comment, Story}
+  alias WhoIsHiring.Comment
 
   @doc """
   Fetches the jobs from the Hacker News thread with the given `parent_item_id` filtering by `langs_of_interest`.
@@ -33,17 +33,6 @@ defmodule WhoIsHiring do
       Enum.any?(langs_of_interest, &String.contains?(text, &1))
     end)
     |> Enum.sort_by(& &1["time"])
-  end
-
-  def pull_story(parent_item_id) do
-    story = HackerNewsClient.get_item_info(parent_item_id)
-
-    %Story{
-      hacker_news_id: story["id"],
-      title: story["title"],
-      time: story["time"]
-    }
-    |> WhoIsHiring.Repo.insert(on_conflict: :nothing)
   end
 
   def pull_jobs(parent_item_id, langs_of_interest) do
