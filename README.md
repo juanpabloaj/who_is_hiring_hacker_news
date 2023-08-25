@@ -1,6 +1,6 @@
 # WhoIsHiring
 
-It checks Hacker News Firebase API looking for elixir jobs.
+It scans the Hacker News Firebase API for jobs of interest.
 
 The Hacker news client is based on the article https://blog.appsignal.com/2020/07/28/the-state-of-elixir-http-clients.html
 
@@ -18,15 +18,15 @@ Looking for job posts with other words
 
     WhoIsHiring.generate_report("36956867", ["Elixir", "Golang"])
 
-## notification mode
+## Notification mode
 
-If the variables are available, the module will check the post of hacker news periodically, if it finds a comment with a mention of one of your technologies of interest, you are going to receive a telegram notification with a short description and the job description link.
+When the necessary environment variables are set, the module will periodically check the Hacker News post. If it detects a comment mentioning any of your specified technologies of interest, you'll receive a notification on Telegram with a brief overview and a link to the job description.
 
-It uses a SQLite table to save the sent notifications and avoid sending them twice. The migrations are applied when the app start.
+The system uses an SQLite table to track notifications, ensuring you don't receive the same alert twice. Migrations are applied upon app startup.
 
-To avoid sending too many messages to the Telegram API, it sends one message per second to Telegram, check `lib/who_is_hiring/telegramer.ex` for more details.
+To prevent spamming the Telegram API, the system throttles its messages, sending one every second. See lib/who_is_hiring/telegramer.ex for more details.
 
-Define and export environment variables
+Set and export the environment variables:
 
     DATABASE_PATH
     TELEGRAM_TOKEN
@@ -48,6 +48,6 @@ Build a release
 
     MIX_ENV=prod mix release who_is_hiring
 
-Build a [burrito](https://github.com/burrito-elixir/burrito) binary
+Build a [Burrito](https://github.com/burrito-elixir/burrito) binary
 
     MIX_ENV=prod mix release who_is_hiring_burrito
