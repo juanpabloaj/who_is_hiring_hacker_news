@@ -9,25 +9,22 @@ defmodule WhoIsHiring.Telegramer do
 
   @interval 500
 
-  def start_link(_opts) do
-    GenServer.start_link(
-      __MODULE__,
-      %{
-        queue: :queue.new(),
-        timer: nil,
-        token: Application.get_env(:who_is_hiring, :telegramer)[:token],
-        channel_id: Application.get_env(:who_is_hiring, :telegramer)[:channel_id]
-      },
-      name: __MODULE__
-    )
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+  end
+
+  def init(opts) do
+    {:ok,
+     %{
+       queue: :queue.new(),
+       timer: nil,
+       token: opts[:token],
+       channel_id: opts[:channel_id]
+     }}
   end
 
   def send_message(message) do
     GenServer.cast(__MODULE__, {:send_message, message})
-  end
-
-  def init(state) do
-    {:ok, state}
   end
 
   def handle_cast({:send_message, message}, %{timer: nil} = state) do
