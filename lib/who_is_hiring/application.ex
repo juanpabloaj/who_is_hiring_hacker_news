@@ -22,6 +22,8 @@ defmodule WhoIsHiring.Application do
 
     notifier_children =
       if notifier_available do
+        WhoIsHiring.Release.migrate()
+
         [
           {WhoIsHiring.Repo, []},
           WhoIsHiring.TelegramClient.child_spec(),
