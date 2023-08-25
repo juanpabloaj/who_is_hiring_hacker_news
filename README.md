@@ -46,3 +46,13 @@ Start mix
     TECHS_OF_INTEREST="Elixir,Golang" \
     HN_PARENT_POST=36956867 \
     mix run --no-halt
+
+## Release
+
+Build a release
+
+    MIX_ENV=prod mix release who_is_hiring
+
+Build a [burrito](https://github.com/burrito-elixir/burrito) binary
+
+    MIX_ENV=prod mix release who_is_hiring_burrito
