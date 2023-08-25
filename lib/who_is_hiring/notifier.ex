@@ -21,7 +21,7 @@ defmodule WhoIsHiring.Notifier do
     {:ok,
      %{
        parent_post: String.to_integer(opts[:parent_post]),
-       techs_of_interest: :string.split(opts[:techs_of_interest], ",")
+       techs_of_interest: String.split(opts[:techs_of_interest], ",")
      }}
   end
 
