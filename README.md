@@ -51,3 +51,5 @@ Build a release
 Build a [Burrito](https://github.com/burrito-elixir/burrito) binary
 
     MIX_ENV=prod mix release who_is_hiring_burrito
+
+I added Burrito because with it I can generate a self-contained binary, and I can use that binary in a small machine where I can't compile Erlang (because of resources or permissions) or the machine is too small to have Docker.
