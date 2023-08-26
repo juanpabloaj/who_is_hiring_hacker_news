@@ -3,6 +3,8 @@ defmodule WhoIsHiring.Application do
   # for more information on OTP Applications
   @moduledoc false
 
+  require Logger
+
   use Application
 
   @impl true
@@ -15,6 +17,7 @@ defmodule WhoIsHiring.Application do
     channel_id = Application.get_env(:who_is_hiring, :telegramer)[:channel_id]
     parent_post = Application.get_env(:who_is_hiring, :notifier)[:parent_post]
     techs = Application.get_env(:who_is_hiring, :notifier)[:techs_of_interest]
+    build_version = Application.get_env(:who_is_hiring, :build_version)
 
     notifier_available =
       [token, channel_id, parent_post, techs]
@@ -22,6 +25,8 @@ defmodule WhoIsHiring.Application do
 
     notifier_children =
       if notifier_available do
+        Logger.info("Starting with build version #{build_version}")
+
         WhoIsHiring.Release.migrate()
 
         [

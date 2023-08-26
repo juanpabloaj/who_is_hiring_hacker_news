@@ -15,4 +15,8 @@ config :who_is_hiring, :notifier,
 config :who_is_hiring,
   ecto_repos: [WhoIsHiring.Repo]
 
+{git_describe, _} = System.cmd("git", ["describe", "--tags", "--always", "--dirty"])
+iso_date = NaiveDateTime.to_iso8601(NaiveDateTime.utc_now())
+config :who_is_hiring, :build_version, "#{String.trim(git_describe)}-#{iso_date}"
+
 import_config "#{config_env()}.exs"
