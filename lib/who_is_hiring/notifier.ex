@@ -25,8 +25,13 @@ defmodule WhoIsHiring.Notifier do
      }}
   end
 
+  def requesting_log_msg(parent, word_list) do
+    joined = Enum.join(word_list, ",")
+    "Requesting jobs to HN API, post #{parent} filter by #{joined}"
+  end
+
   def handle_info(:request_jobs, state) do
-    Logger.info("Requesting jobs to HN API")
+    Logger.info(requesting_log_msg(state.parent_post, state.techs_of_interest))
 
     WhoIsHiring.pull_jobs(state.parent_post, state.techs_of_interest)
 
