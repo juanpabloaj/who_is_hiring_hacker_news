@@ -27,7 +27,7 @@ defmodule WhoIsHiring.Notifier do
 
   def requesting_log_msg(parent, word_list) do
     joined = Enum.join(word_list, ",")
-    "Requesting jobs to HN API, post #{parent} filter by #{joined}"
+    "Requesting jobs to HN API, post #{parent} filtered by #{joined}"
   end
 
   def handle_info(:request_jobs, state) do
